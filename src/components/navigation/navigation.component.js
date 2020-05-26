@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {connect} from 'react-redux';
 import {SignOut} from '../../redux/form/form.actions';
-import {useHistory} from "react-router-dom";
+import {useHistory,useRouteMatch} from "react-router-dom";
 import {userExist} from './navigation.utils';
 
 const Navigation =({SignOut,user})=>{
