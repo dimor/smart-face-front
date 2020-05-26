@@ -2,7 +2,7 @@
   "name": "smartface",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://dimor.github.io/smartface",
+  "homepage": "http://dimor.github.io/smart-face-front",
   "engines": {
     "node": "12.16.x"
   },
