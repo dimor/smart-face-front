@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link,useHistory} from "react-router-dom";
+import {Link,useHistory,useLocation} from "react-router-dom";
 import {connect} from 'react-redux';
 import {OnSubmit,OnChangeName,OnChangeEmail,OnChangePassword} from '../../redux/form/form.actions';
 
