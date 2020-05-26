@@ -1,8 +1,8 @@
 import React from 'react';
-import './FaceRecognition.css';
+import './face_recognition.styles.css';
 
 
-const FaceRecognition = ({imgUrl,boxes}) => {
+const FaceRecognition = ({imgUrl='',boxes=[]}) => {
 
 
   const createboxes=(boxes)=>{

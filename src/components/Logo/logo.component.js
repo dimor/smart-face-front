@@ -1,7 +1,10 @@
 import React from 'react';
 import Tilt from 'react-tilt';
-import './Logo.css';
+import './logo.styles.css';
 import sitelogo from './sitelogo.png';
+
+
+
 const Logo = () => {
 
   return (
