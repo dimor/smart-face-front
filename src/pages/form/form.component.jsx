@@ -8,7 +8,8 @@ import {OnSubmit,OnChangeName,OnChangeEmail,OnChangePassword} from '../../redux/
 const Form =(props)=> {
 
 
-    const history = useHistory();
+  const history = useHistory();
+  const location = useLocation();
     
     let regForm = history.location.pathname === '/register' ? true:false;
 
@@ -27,8 +28,8 @@ const Form =(props)=> {
 
 
 
-    console.log('form',history);
-    console.log('reg',regForm);
+    console.log('history',history);
+    console.log('location',location);
 
      return(   
           <article className="br3 ba dark-gray bg-white-20 b--black-50 mv4 w-100-m shadow-5 mw6 center">

@@ -9,9 +9,16 @@ import {connect} from 'react-redux';
 
 const PageContainer =({user})=>{
 
+  const history = useHistory();
+  const location = useLocation();
+  
+  
+
+
+
 return(
     <Switch>
-    <Route path="/" exact>
+    <Route path="/signin" exact>
         <Form />
     </Route>
     <Route path="/face" exact>
