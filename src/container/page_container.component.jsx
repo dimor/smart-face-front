@@ -21,7 +21,7 @@ return(
     <Route path={`${process.env.PUBLIC_URL}/face`} exact>
         <HomePage />
     </Route>
-    <Route path={`${process.env.PUBLIC_URL}/register`} exact>
+    <Route path={`/register`} exact>
           <Form />
     </Route>
   </Switch>

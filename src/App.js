@@ -10,7 +10,7 @@ import {BrowserRouter as Router} from "react-router-dom";
 const App =()=> {
   return (
     <div className="App">
-      <Router basename={'/smart-face-front'}>
+      <Router>
       <Particles className='particles' params={CONSTANTS.PARTICLES_OPTIONS}/>
       <Navigation />
       <PageContainer />
