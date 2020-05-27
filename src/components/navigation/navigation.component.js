@@ -24,8 +24,8 @@ const Navigation =({SignOut,user})=>{
     }else{
       return(
         <nav style={{display:'flex',justifyContent:'flex-end'}}>
-         <Link to={'/signin'}><p className='f3 link dim black underline pa3 pointer'>Sign In</p></Link>
-         <Link to={`/register` }><p className='f3 link dim black underline pa3 pointer'>Register</p></Link>
+         <Link to={`${process.env.PUBLIC_URL}/signin`}><p className='f3 link dim black underline pa3 pointer'>Sign In</p></Link>
+         <Link to={`${process.env.PUBLIC_URL}/register` }><p className='f3 link dim black underline pa3 pointer'>Register</p></Link>
         </nav>
       );
     }
