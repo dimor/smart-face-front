@@ -3,20 +3,22 @@ import Logo from '../../components/logo/logo.component';
 import Rank from '../../components/rank/rank.component';
 import ImageLinkForm from '../../components/image_link_form/image_link_form.component';
 import FaceRecognition from '../../components/face_recognition/face_recognition.component';
-
+import {connect} from 'react-redux';
 import {Link,useHistory,useLocation} from "react-router-dom";
 
 
 
 
-const HomePage=()=>{
+const HomePage=(props)=>{
+
+    const {user} = props;
 
 
 return(
     
     <React.Fragment>
     <Logo />
-    <Rank />     {/*   name={this.state.user.name} entries={this.state.user.entries} */}
+    <Rank name={user.name} entries={user.entries}/>  
     <ImageLinkForm
     onInputChange={this.onInputChange}
     onButtonSubmit={this.onButtonSubmit} />
@@ -25,4 +27,20 @@ return(
 );
 }
 
-export default HomePage;
+
+
+
+
+
+const mapStateToProps = state =>{
+
+    return{
+
+        user : state.form.user
+
+    }
+}
+
+
+
+export default connect(mapStateToProps,null)(HomePage);

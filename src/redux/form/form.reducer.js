@@ -1,13 +1,14 @@
 
 import {FormActionTypes} from './form.types';
-
+import {ImageLinkFormActionTypes} from './../image_link_form/image_link_form.types';
 
 const INITIAL_STATE = {
 	name:'',
 	email:'',
 	password:'',
 	user:{},
-	isPending:false
+	isPending:false,
+	count:0
 };
 
 
@@ -30,6 +31,12 @@ const FormReducer = (state = INITIAL_STATE , action) =>{
 			return {...state, error:action.payload};
 		case FormActionTypes.SIGN_OUT:
 			return {state:INITIAL_STATE}
+		case ImageLinkFormActionTypes.INCREMENT_SUBMIT_PENDING:
+			return {...state,isPending:true};
+		case ImageLinkFormActionTypes.INCREMENT_SUBMIT_SUCCESS:
+			return {...state,isPending:false,user:action.payload}
+		case ImageLinkFormActionTypes.INCREMENT_SUBMIT_FAILED:
+			return {...state, error:action.payload};
 		default:
 			return state;
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import './face_recognition.styles.css';
+import {connect} from 'react-redux';
 
-
-const FaceRecognition = ({imgUrl='',boxes=[]}) => {
+const FaceRecognition = ({imgUrl,boxes}) => {
 
 
   const createboxes=(boxes)=>{
@@ -29,5 +29,15 @@ const FaceRecognition = ({imgUrl='',boxes=[]}) => {
 
 }
 
+const mapStateToProps = state =>{
 
-export default FaceRecognition;
+  return{
+
+    imgUrl : state.image_link_form.imgUrl,
+    boxes : state.image_link_form.boxes
+
+  }
+}
+
+
+export default connect(mapStateToProps,null)(FaceRecognition);
