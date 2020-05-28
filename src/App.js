@@ -10,7 +10,7 @@ import {BrowserRouter as Router} from "react-router-dom";
 const App =()=> {
   return (
     <div className="App">
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
       <Particles className='particles' params={CONSTANTS.PARTICLES_OPTIONS}/>
       <Navigation />
       <PageContainer />
