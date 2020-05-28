@@ -37,7 +37,7 @@ export const OnSubmit=(credentials,history)=>(dispatch)=>{
 
 
 export const SignOut=(history)=>(dispatch)=>{
-	history.push(`${process.env.PUBLIC_URL}/signin`);
+	history.push(`/signin`);
 	dispatch({type: FormActionTypes.SIGN_OUT})
 };
 
