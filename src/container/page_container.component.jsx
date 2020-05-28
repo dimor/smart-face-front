@@ -15,13 +15,13 @@ const PageContainer =({user})=>{
 
 return(
     <Switch>
-    <Route path={`${process.env.PUBLIC_URL}/signin`} >
+    <Route path={`/signin`} >
         <Form />
     </Route>
-    <Route path={`${process.env.PUBLIC_URL}/face`} >
+    <Route path={`/face`} >
         <HomePage />
     </Route>
-    <Route path={`${process.env.PUBLIC_URL}/register`}  >
+    <Route path={`/register`}  >
           <Form />
     </Route>
   </Switch>
