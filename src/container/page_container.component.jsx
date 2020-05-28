@@ -10,7 +10,7 @@ const PageContainer =({user})=>{
 
   let match = useRouteMatch();
   
-  console.log('match',match)
+  console.log('url public',process.env.PUBLIC_URL)
   
 
 return(
