@@ -15,15 +15,9 @@ const PageContainer =({user})=>{
 
 return(
     <Switch>
-    <Route path={`/signin`} >
-        <Form />
-    </Route>
-    <Route path={`/face`} >
-        <HomePage />
-    </Route>
-    <Route path={`/register`}  >
-          <Form />
-    </Route>
+    <Route path={`/signin`} component={Form} />
+    <Route path={`/face`} component={HomePage} />
+    <Route path={`/register`} component={Form} />
   </Switch>
 );
 }

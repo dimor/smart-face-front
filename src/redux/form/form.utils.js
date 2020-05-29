@@ -12,7 +12,6 @@
       return fetch(`https://agile-atoll-31330.herokuapp.com/${url}`,
       {
         method:'post',
-        mode: 'no-cors',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify(objJson)
       })
