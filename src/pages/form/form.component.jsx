@@ -26,8 +26,6 @@ const Form =(props)=> {
     }
 
 
-
-
     console.log('history',history);
     console.log('location',location);
 
@@ -64,7 +62,7 @@ const Form =(props)=> {
                  className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value={!regForm?'Sign In':'Register'} />
               </div>
               {!regForm?(<div className="lh-copy mt3">
-                <p onClick={()=>history.push(`${process.env.PUBLIC_URL}/register`)} className="pointer f6 link dim black db">Register</p>
+                <p onClick={()=>history.push(`/register`)} className="pointer f6 link dim black db">Register</p>
               </div>):null}
             </div>
       </main>
