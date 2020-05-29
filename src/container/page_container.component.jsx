@@ -15,7 +15,7 @@ const PageContainer =({user})=>{
 
 return(
     <Switch>
-    <Route path={`/signin`} component={Form} />
+    <Route path={`/smart-face-front/signin`} component={Form} />
     <Route path={`/face`} component={HomePage} />
     <Route path={`/register`} component={Form} />
   </Switch>
