@@ -1,5 +1,5 @@
 import {FormActionTypes} from './form.types';
-import {SubmitCall} from './form.utils';
+import {SubmitCall,validateForm} from './form.utils';
 
 export const OnChangeName=(text)=>({
 
@@ -29,10 +29,17 @@ export const OnChangePassword=(text)=>({
 
 
 export const OnSubmit=(credentials,history)=>(dispatch)=>{
-	dispatch({type:FormActionTypes.SUBMIT_PENDING});
-	SubmitCall(credentials,history)
-	.then(data => dispatch({ type: FormActionTypes.SUBMIT_SUCCESS, payload: data }))
-	.catch(error => dispatch({ type: FormActionTypes.SUBMIT_FAILED, payload: error }))
+	console.log('submit',credentials)
+
+	if(validateForm(credentials,history,dispatch)){
+		dispatch({type:FormActionTypes.SUBMIT_PENDING});
+		SubmitCall(credentials,history,dispatch)
+		.then(data => dispatch({ type: FormActionTypes.SUBMIT_SUCCESS, payload: data }))
+		.catch(error => dispatch({ type: FormActionTypes.SUBMIT_FAILED, payload: error }))
+	}else{
+
+		dispatch({type:FormActionTypes.VALIDATION_FAILED_BLANK});
+	}	
 }
 
 

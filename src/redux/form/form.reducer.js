@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 	password:'',
 	user:{},
 	isPending:false,
-	count:0
+	validation:''
 };
 
 
@@ -26,11 +26,17 @@ const FormReducer = (state = INITIAL_STATE , action) =>{
 		case FormActionTypes.SUBMIT_PENDING:
 			return {...state,isPending:true};
 		case FormActionTypes.SUBMIT_SUCCESS:
-			return {...state,isPending:false,user:action.payload}
+			return {...state,isPending:false,user:action.payload,validation:''}
 		case FormActionTypes.SUBMIT_FAILED:
 			return {...state, error:action.payload};
 		case FormActionTypes.SIGN_OUT:
-			return {state:INITIAL_STATE}
+			return {...state,user:{},name:'',email:'',password:''}
+		case FormActionTypes.VALIDATION_FAILED_BLANK:
+			return {...state,validation:'Please fill in the required fields.'}
+		case FormActionTypes.VALIDATION_FAILED_COMBINATION:
+			return {...state,validation:'The combination of email and password you have entered is incorrect.'}
+		case FormActionTypes.VALIDATION_FAILED_COMBINATION:
+			return {...state,validation:'An account with this email already exists'}
 		case ImageLinkFormActionTypes.INCREMENT_SUBMIT_PENDING:
 			return {...state,isPending:true};
 		case ImageLinkFormActionTypes.INCREMENT_SUBMIT_SUCCESS:
@@ -42,5 +48,7 @@ const FormReducer = (state = INITIAL_STATE , action) =>{
 
 	};
 }
+
+
 
 export default FormReducer;

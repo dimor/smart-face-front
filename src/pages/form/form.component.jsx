@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link,useHistory,useLocation} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import {connect} from 'react-redux';
 import {OnSubmit,OnChangeName,OnChangeEmail,OnChangePassword} from '../../redux/form/form.actions';
 
@@ -7,15 +7,13 @@ import {OnSubmit,OnChangeName,OnChangeEmail,OnChangePassword} from '../../redux/
 
 const Form =(props)=> {
 
-
   const history = useHistory();
-  const location = useLocation();
     
     let regForm = history.location.pathname === '/register' ? true:false;
 
     const {onSubmitForm,onChangeName,onChangeEmail,onChangePassword} = props;
 
-    const {name,email,password} = props;
+    const {name,email,password,validation} = props;
    
     const credentials = {
 
@@ -25,9 +23,6 @@ const Form =(props)=> {
     
     }
 
-
-    console.log('history',history);
-    console.log('location',location);
 
      return(   
           <article className="br3 ba dark-gray bg-white-20 b--black-50 mv4 w-100-m shadow-5 mw6 center">
@@ -40,7 +35,12 @@ const Form =(props)=> {
                     <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
                     <input
                     onChange={(e)=>onChangeName(e.target.value)}
-                    className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100-m" type="text" name="name"  id="name" />
+                    className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100-m"
+                     type="text" 
+                     name="name" 
+                      id="name"
+                      required
+                      aria-required="true"  />
                 </div>):null}
 
                 <div className="mt3">
@@ -61,6 +61,7 @@ const Form =(props)=> {
             onClick={()=>onSubmitForm(credentials,history)}
                  className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value={!regForm?'Sign In':'Register'} />
               </div>
+              <p className=' c--red'>{validation}</p>
               {!regForm?(<div className="lh-copy mt3">
                 <p onClick={()=>history.push(`/register`)} className="pointer f6 link dim black db">Register</p>
               </div>):null}
@@ -71,24 +72,22 @@ const Form =(props)=> {
 }
 
 
+
+
+
 const mapStateToProps = state =>{
 
   return{
-
     name:state.form.name,
     email:state.form.email,
-    password:state.form.password
-
+    password:state.form.password,
+    validation:state.form.validation
   }
-
-
 }
-
 
 const mapDispatchToProps = dispatch =>{
 
   return{
-
     onSubmitForm: (credentials,history) =>dispatch(OnSubmit(credentials,history)),
     onChangeName: (text) =>dispatch(OnChangeName(text)),
     onChangeEmail: (text) =>dispatch(OnChangeEmail(text)),
