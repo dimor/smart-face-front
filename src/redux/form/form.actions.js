@@ -1,4 +1,5 @@
 import {FormActionTypes} from './form.types';
+import {ImageLinkFormActionTypes} from './../image_link_form/image_link_form.types';
 import {SubmitCall,validateForm} from './form.utils';
 
 export const OnChangeName=(text)=>({
@@ -35,16 +36,20 @@ export const OnSubmit=(credentials,history)=>(dispatch)=>{
 		dispatch({type:FormActionTypes.SUBMIT_PENDING});
 		SubmitCall(credentials,history,dispatch)
 		.then(data => dispatch({ type: FormActionTypes.SUBMIT_SUCCESS, payload: data }))
-		.catch(error => dispatch({ type: FormActionTypes.SUBMIT_FAILED, payload: error }))
+		.catch(error => {
+			dispatch({ type: FormActionTypes.SUBMIT_FAILED, payload: error })
+		})
 	}else{
-
-		dispatch({type:FormActionTypes.VALIDATION_FAILED_BLANK});
+		const error =  Error('Please fill in the required fields.')
+		dispatch({ type: FormActionTypes.SUBMIT_FAILED, payload: error })
+		// .catch(error=>dispatch({ type: FormActionTypes.SUBMIT_FAILED, payload: error }))
 	}	
 }
 
 
 export const SignOut=(history)=>(dispatch)=>{
 	history.push(`/signin`);
+	dispatch({type: ImageLinkFormActionTypes.CLEAR_LINK_FORM})
 	dispatch({type: FormActionTypes.SIGN_OUT})
 };
 

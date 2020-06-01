@@ -63,3 +63,26 @@ export const calculateFaceLocation=(data)=>{
     .catch(error => dispatch({ type: ImageLinkFormActionTypes.INCREMENT_SUBMIT_FAILED, payload: error }))
   }
 
+
+
+  export const UploadCall =(file)=>{
+
+    const formData = new FormData();
+
+    formData.append('file', file);
+
+    const options = {
+      method: 'POST',
+      body: formData,
+      method:'no-cors'
+      // If you add this, upload won't work
+      // headers: {
+      //   'Content-Type': 'multipart/form-data',
+      // }
+    };
+    
+    return fetch('https://uguu.se/api.php?d=upload', options);
+
+
+
+  }

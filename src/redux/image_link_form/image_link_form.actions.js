@@ -1,5 +1,5 @@
 import {ImageLinkFormActionTypes} from './image_link_form.types';
-import {SubmitCallLinkForm,calculateFaceLocation,IncrementCall} from './image_link_form.utils';
+import {SubmitCallLinkForm,calculateFaceLocation,IncrementCall,UploadCall} from './image_link_form.utils';
 
 export const OnChangeImageLink =(text)=>({
 
@@ -18,6 +18,17 @@ export const SubmitLinkForm=(imageUrl,user)=>(dispatch)=>{
     .then(IncrementCall(user,dispatch))
 	.then(data => dispatch({ type: ImageLinkFormActionTypes.IMAGE_LINK_FORM_SUBMIT_SUCCESS, payload: data }))
 	.catch(error => dispatch({ type: ImageLinkFormActionTypes.IMAGE_LINK_FORM_SUBMIT_FAILED, payload: error }))
+}
+
+
+export const UploadLinkForm=(file)=>(dispatch)=>{
+
+    dispatch({type:ImageLinkFormActionTypes.IMAGE_LINK_FORM_UPLOAD_PENDING});
+    UploadCall(file)
+    .then(data=>console.log(data))
+    .catch(error=>console.log(error))
+
+    
 }
 
 

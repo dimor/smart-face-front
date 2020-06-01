@@ -2,6 +2,7 @@ import React from 'react';
 import {useHistory} from "react-router-dom";
 import {connect} from 'react-redux';
 import {OnSubmit,OnChangeName,OnChangeEmail,OnChangePassword} from '../../redux/form/form.actions';
+import Loader from '../../components/loader/loader.component';
 
 
 
@@ -13,7 +14,7 @@ const Form =(props)=> {
 
     const {onSubmitForm,onChangeName,onChangeEmail,onChangePassword} = props;
 
-    const {name,email,password,validation} = props;
+    const {name,email,password,validation,isPending} = props;
    
     const credentials = {
 
@@ -23,13 +24,17 @@ const Form =(props)=> {
     
     }
 
-
+    console.log(isPending)
      return(   
-          <article className="br3 ba dark-gray bg-white-20 b--black-50 mv4 w-100-m shadow-5 mw6 center">
+       <article className="br3 ba dark-gray bg-white-20 b--black-50 mv4 w-100-m shadow-5 mw6 center">
           <main className="pa4 black-70">
             <div className="measure">
+   
+       <Loader isPending={isPending}> 
               <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                 <legend className="f1 fw6 ph0 mh0">{!regForm?'Sign In':'Register'}</legend>
+
+
 
                 {regForm?(<div className="mt3">
                     <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
@@ -40,7 +45,7 @@ const Form =(props)=> {
                      name="name" 
                       id="name"
                       required
-                      aria-required="true"  />
+                />
                 </div>):null}
 
                 <div className="mt3">
@@ -65,6 +70,8 @@ const Form =(props)=> {
               {!regForm?(<div className="lh-copy mt3">
                 <p onClick={()=>history.push(`/register`)} className="pointer f6 link dim black db">Register</p>
               </div>):null}
+      </Loader>
+
             </div>
       </main>
       </article>
@@ -81,7 +88,8 @@ const mapStateToProps = state =>{
     name:state.form.name,
     email:state.form.email,
     password:state.form.password,
-    validation:state.form.validation
+    validation:state.form.validation,
+    isPending:state.form.isPending
   }
 }
 

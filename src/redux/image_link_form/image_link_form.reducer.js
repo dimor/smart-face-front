@@ -15,13 +15,15 @@ const FormReducer = (state = INITIAL_STATE , action) =>{
 
 	switch(action.type){
 		case ImageLinkFormActionTypes.ON_CHANGE_IMAGE_LINK:
-			return {...state ,imgUrl:action.payload};
+			return {...state ,imgUrl:action.payload,boxes:[]};
 		case ImageLinkFormActionTypes.IMAGE_LINK_FORM_SUBMIT_PENDING:
 			return {...state,isPending:true};
 		case ImageLinkFormActionTypes.IMAGE_LINK_FORM_SUBMIT_SUCCESS:
 			return {...state,isPending:false,boxes:action.payload}
 		case ImageLinkFormActionTypes.IMAGE_LINK_FORM_SUBMIT_FAILED:
 			return {...state, error:action.payload};
+		case ImageLinkFormActionTypes.CLEAR_LINK_FORM:
+			return {...state,boxes:[],imgUrl:''}
 		default:
 			return state;
 

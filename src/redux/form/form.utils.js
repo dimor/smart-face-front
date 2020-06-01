@@ -13,6 +13,7 @@ import {FormActionTypes} from './form.types';
         return fetch(`https://agile-atoll-31330.herokuapp.com/${url}`,
         {
           method:'post',
+          mode: 'cors',
           headers:{'Content-Type':'application/json'},
           body:JSON.stringify(objJson)
         })
@@ -23,8 +24,15 @@ import {FormActionTypes} from './form.types';
           history.push('/face')
           return data
         }else{
-          regForm?dispatch({type:FormActionTypes.VALIDATION_FAILED_REGISTER}):dispatch({type:FormActionTypes.VALIDATION_FAILED_COMBINATION})
-          throw Error;
+
+          if(regForm)
+          {
+            throw Error('Something went wrong , please try again.')
+          }else{
+
+            throw Error('The combination of email and password you have entered is incorrect.')
+          }
+
         }
       }
         )
@@ -38,7 +46,7 @@ import {FormActionTypes} from './form.types';
     const {name,email,password} = credensials;
     const regForm = history.location.pathname === '/register' ? true:false;
 
-      console.log('validate',credensials)
+   
 
     if(regForm){
       return isEmpty(name)||isEmpty(email)||isEmpty(password)?false:true
