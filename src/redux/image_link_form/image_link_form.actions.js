@@ -21,14 +21,10 @@ export const SubmitLinkForm=(imageUrl,user)=>(dispatch)=>{
 }
 
 
-export const UploadLinkForm=(file)=>(dispatch)=>{
-
+export const UploadLinkForm=(file,user)=>(dispatch)=>{
     dispatch({type:ImageLinkFormActionTypes.IMAGE_LINK_FORM_UPLOAD_PENDING});
-    UploadCall(file)
-    .then(data=>console.log(data))
-    .catch(error=>console.log(error))
+    UploadCall(file,dispatch)
 
-    
 }
 
 

@@ -15,17 +15,16 @@ const ImageLinkForm = ({onUploadLinkForm,onImageLinkFormChange,onSubmitLinkForm,
       </p>
       <div className='center db w-100'>
         <div className='form center pa3 br3 shadow-5'>
-          <input  type='url' className='pa2 f4 w-100 center' onChange={(e)=>onImageLinkFormChange(e.target.value)} />
-          <button
+          <input value={imgUrl}  placeholder='http://example.com/face.jpg' type='url' className='pa2 f4 w-100 center' onChange={(e)=>onImageLinkFormChange(e.target.value)} />
+        </div>
+        <div className='file white form center ma2 pa3 br3 shadow-5'>
+          <input className='inputfile'  onChange={(e)=>onUploadLinkForm(e.target.files[0])} id='uploadfile' name='uploadfile' type='file'  />
+          <label htmlFor="uploadfile">Choose a file</label>
+        </div>
+        <button
           type='submit'
           onClick={()=>onSubmitLinkForm(imgUrl,user)}
           className='w-30 grow f4 link ph3 pv2 black bg-light-purple'>Detect</button>
-        </div>
-        <div className='file white form center ma2 pa3 br3 shadow-5'>
-       <input  onChange={(e)=>onUploadLinkForm(e.target.files[0])} name='device' type='file'  />
-        <button  type="submit">Submit</button>
-     
-        </div>
       </div>
     </div>
   );
@@ -40,7 +39,7 @@ const mapDispatchToProps=dispatch=>{
 
     onImageLinkFormChange : (text)=>dispatch(OnChangeImageLink(text)),
     onSubmitLinkForm : (imgUrl,user)=>dispatch(SubmitLinkForm(imgUrl,user)),
-    onUploadLinkForm:(file)=>dispatch(UploadLinkForm(file))
+    onUploadLinkForm:(file,user)=>dispatch(UploadLinkForm(file,user))
   }
 
 }

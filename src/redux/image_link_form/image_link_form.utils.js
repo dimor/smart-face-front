@@ -48,7 +48,9 @@ export const calculateFaceLocation=(data)=>{
     fetch('https://agile-atoll-31330.herokuapp.com/image',{
 
       method:'put',
-      headers:{'Content-Type':'application/json'},
+      headers:{'Content-Type':'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'PUT, POST, GET, OPTIONS, DELETE'},
       body:JSON.stringify({
         id:user.id
       })
@@ -65,24 +67,35 @@ export const calculateFaceLocation=(data)=>{
 
 
 
-  export const UploadCall =(file)=>{
+  export const UploadCall =(file,dispatch)=>{
 
     const formData = new FormData();
 
     formData.append('file', file);
+    formData.append('randomname', 'randomname');
 
     const options = {
       method: 'POST',
-      body: formData,
-      method:'no-cors'
-      // If you add this, upload won't work
-      // headers: {
-      //   'Content-Type': 'multipart/form-data',
-      // }
-    };
+      mode:'no-cors',
+      headers:{
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'PUT, POST, GET, OPTIONS, DELETE',
+      'Access-Control-Allow-Headers': 'Content-Type'},
+      body:formData
+    }
+
     
-    return fetch('https://uguu.se/api.php?d=upload', options);
+    return fetch('https://uguu.se/api.php?d=upload-tool',options)
+    .then(response =>response.text())
+    .then(response =>{
+         dispatch({type:ImageLinkFormActionTypes.IMAGE_LINK_FORM_UPLOAD_SUCCESS,payload:response})
+          return response;
+    })
+    .catch(error => dispatch({type:ImageLinkFormActionTypes.IMAGE_LINK_FORM_UPLOAD_FAILED,payload:error}))
 
-
+     
 
   }
+  
+  
+
