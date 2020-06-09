@@ -76,7 +76,7 @@ export const calculateFaceLocation=(data)=>{
 
     const options = {
       method: 'POST',
-      mode:'no-cors',
+      mode:'cors',
       headers:{
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'PUT, POST, GET, OPTIONS, DELETE',
