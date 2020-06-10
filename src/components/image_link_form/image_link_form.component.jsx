@@ -9,12 +9,13 @@ const ImageLinkForm = ({onUploadLinkForm,onImageLinkFormChange,onSubmitLinkForm,
   console.log('imageUrl0',imgUrl)
 
   return (
-    <div className='f4 center db border-box w-100'>
+    <div className=' center db border-box w-100'>
 
       <p className='f3 white db'>
-        {'This Magic Brain will detect faces in your pictures. Give it a try.\n'}
-        {' \n'}
-        {'\nPaste image url or choose from device and presss detect.'}
+        {'This Magic Brain will detect faces in your pictures. Give it a try.'}
+      </p>
+      <p className='f3 white db'>
+        {'Paste image url or choose from device and presss detect.'}
       </p>
 
       <div className='center db br2'>
@@ -34,6 +35,7 @@ const ImageLinkForm = ({onUploadLinkForm,onImageLinkFormChange,onSubmitLinkForm,
           className=' grow f4 link ph3 pv2 black bg-light-purple'>Detect
         </button>
 
+      <p className='pa3 db red'> {error}</p>
       </div>
     </div>
   );
@@ -59,6 +61,7 @@ const mapStateToProps = state =>{
   return{
 
     imgUrl : state.image_link_form.imgUrl,
+    error : state.image_link_form.error,
     user : state.form.user
 
   }
