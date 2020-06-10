@@ -1,5 +1,5 @@
 .form{
-  width:700px;
+  width:50%;
   background:
   radial-gradient(circle at 100% 50%, transparent 20%, rgba(255,255,255,.3) 21%, rgba(255,255,255,.3) 34%, transparent 35%, transparent),
   radial-gradient(circle at 0% 50%, transparent 20%, rgba(255,255,255,.3) 21%, rgba(255,255,255,.3) 34%, transparent 35%, transparent) 0 -50px;
@@ -20,13 +20,13 @@
   font-size: 1.25em;
   font-weight: 700;
   color: white;
-  background-color: black;
+  background-color: transparent;
   display: inline-block;
 }
 
 .inputfile:focus + label,
 .inputfile + label:hover {
-  background-color: red;
+  background-color: transparent;
 }
 
 .inputfile + label {

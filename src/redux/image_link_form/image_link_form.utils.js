@@ -84,7 +84,6 @@ export const calculateFaceLocation=(data)=>{
       body:formData
     }
 
-    
     return fetch('https://uguu.se/api.php?d=upload-tool',options)
     .then(response =>response.text())
     .then(response =>{
