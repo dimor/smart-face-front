@@ -4,7 +4,7 @@ import {OnChangeImageLink,SubmitLinkForm,UploadLinkForm} from '../../redux/image
 import {connect} from 'react-redux';
 
 
-const ImageLinkForm = ({onUploadLinkForm,onImageLinkFormChange,onSubmitLinkForm,imgUrl,user,error}) => {
+const ImageLinkForm = ({onUploadLinkForm,onImageLinkFormChange,onSubmitLinkForm,imgUrl,user,link_msg}) => {
 
   console.log('imageUrl0',imgUrl)
 
@@ -12,7 +12,7 @@ const ImageLinkForm = ({onUploadLinkForm,onImageLinkFormChange,onSubmitLinkForm,
     <div className=' center db border-box w-100'>
 
       <p className='f3 white db'>
-        {'This Magic Brain will detect faces in your pictures. Give it a try.'}
+        {'This Smart Face will detect faces in your pictures. Give it a try.'}
       </p>
       <p className='f3 white db'>
         {'Paste image url or choose from device and presss detect.'}
@@ -34,8 +34,7 @@ const ImageLinkForm = ({onUploadLinkForm,onImageLinkFormChange,onSubmitLinkForm,
           onClick={()=>onSubmitLinkForm(imgUrl,user)}
           className=' grow f4 link ph3 pv2 black bg-light-purple'>Detect
         </button>
-
-      <p className='pa3 db red'> {error}</p>
+        <p>{link_msg}</p>
       </div>
     </div>
   );
@@ -50,7 +49,7 @@ const mapDispatchToProps=dispatch=>{
 
     onImageLinkFormChange : (text)=>dispatch(OnChangeImageLink(text)),
     onSubmitLinkForm : (imgUrl,user)=>dispatch(SubmitLinkForm(imgUrl,user)),
-    onUploadLinkForm:(file,user)=>dispatch(UploadLinkForm(file,user))
+    onUploadLinkForm:(file)=>dispatch(UploadLinkForm(file))
   }
 
 }
@@ -61,8 +60,8 @@ const mapStateToProps = state =>{
   return{
 
     imgUrl : state.image_link_form.imgUrl,
-    error : state.image_link_form.error,
-    user : state.form.user
+    user : state.form.user,
+    link_msg : state.image_link_form.link_msg
 
   }
 }

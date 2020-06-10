@@ -76,24 +76,12 @@ export const calculateFaceLocation=(data)=>{
 
     const options = {
       method: 'POST',
-      mode:'cors',
-      headers:{
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'PUT, POST, GET, OPTIONS, DELETE',
-      'Access-Control-Allow-Headers': 'Content-Type'},
       body:formData
     }
 
-    return fetch('https://uguu.se/api.php?d=upload-tool',options)
+    return fetch('https://cors-anywhere.herokuapp.com/https://uguu.se/api.php?d=upload-tool',options)
     .then(response =>response.text())
-    .then(response =>{
-         dispatch({type:ImageLinkFormActionTypes.IMAGE_LINK_FORM_UPLOAD_SUCCESS,payload:response})
-          return response;
-    })
-    .catch(error => dispatch({type:ImageLinkFormActionTypes.IMAGE_LINK_FORM_UPLOAD_FAILED,payload:error}))
-
-     
-
+    
   }
   
   

@@ -21,9 +21,11 @@ export const SubmitLinkForm=(imageUrl,user)=>(dispatch)=>{
 }
 
 
-export const UploadLinkForm=(file,user)=>(dispatch)=>{
+export const UploadLinkForm=(file)=>(dispatch)=>{
     dispatch({type:ImageLinkFormActionTypes.IMAGE_LINK_FORM_UPLOAD_PENDING});
-    UploadCall(file,dispatch)
+    UploadCall(file)
+    .then(response => dispatch({type:ImageLinkFormActionTypes.IMAGE_LINK_FORM_UPLOAD_SUCCESS,payload:response}))
+    .catch(error => dispatch({type:ImageLinkFormActionTypes.IMAGE_LINK_FORM_UPLOAD_FAILED,payload:error}))
 
 }
 

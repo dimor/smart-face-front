@@ -6,6 +6,7 @@ const INITIAL_STATE = {
 	imgUrl :'',
 	boxes:[],
 	isPending:false,
+	link_msg:''
 };
 
 
@@ -29,7 +30,7 @@ const FormReducer = (state = INITIAL_STATE , action) =>{
 		case ImageLinkFormActionTypes.IMAGE_LINK_FORM_UPLOAD_SUCCESS:
 			return {...state,isPending:false,imgUrl:action.payload}
 		case ImageLinkFormActionTypes.IMAGE_LINK_FORM_UPLOAD_FAILED:
-			return {...state,isPending:false,error:action.payload}
+			return {...state,isPending:false,error:action.payload,link_msg:action.payload.message}
 		default:
 			return state;
 
