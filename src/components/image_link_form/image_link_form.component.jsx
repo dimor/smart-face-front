@@ -4,7 +4,7 @@ import {OnChangeImageLink,SubmitLinkForm,UploadLinkForm} from '../../redux/image
 import {connect} from 'react-redux';
 
 
-const ImageLinkForm = ({onUploadLinkForm,onImageLinkFormChange,onSubmitLinkForm,imgUrl,user}) => {
+const ImageLinkForm = ({onUploadLinkForm,onImageLinkFormChange,onSubmitLinkForm,imgUrl,user,error}) => {
 
   console.log('imageUrl0',imgUrl)
 
