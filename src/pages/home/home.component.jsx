@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from './../../components/logo/logo.component';
+
 import Rank from '../../components/rank/rank.component';
 import ImageLinkForm from '../../components/image_link_form/image_link_form.component';
 import FaceRecognition from '../../components/face_recognition/face_recognition.component';
@@ -17,7 +17,7 @@ const HomePage=(props)=>{
 return(
     
     <React.Fragment>
-    <Logo />
+ 
     <Rank name={user.name} entries={user.entries}/>  
     <ImageLinkForm
     onInputChange={this.onInputChange}
