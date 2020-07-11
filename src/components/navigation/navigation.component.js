@@ -1,11 +1,11 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {connect} from 'react-redux';
-import {SignOut} from '../../redux/form/form.actions';
+import {SignOut,ClearForm} from '../../redux/form/form.actions';
 import {useHistory,useRouteMatch} from "react-router-dom";
 import {userExist} from './navigation.utils';
 
-const Navigation =({SignOut,user})=>{
+const Navigation =({SignOut,user,onClearForm})=>{
 
   const history = useHistory();
   let match = useRouteMatch();
@@ -14,20 +14,32 @@ const Navigation =({SignOut,user})=>{
   console.log('nav',match);
   console.log('nav',history);
 
-    if(userExist(user)){
-        return(
-        <nav style={{display:'flex',justifyContent:'flex-end'}}>
-         <p onClick={()=>SignOut(history)} className='f3 link dim black underline pa3 pointer'>Sign Out</p>
+    const PushToLocation=(location)=>{
 
-        </nav>
-      );
+      onClearForm();
+      
+      history.push(location)
+
+    }
+
+    if(history.location.pathname === '/'){
+        return <div></div>
     }else{
-      return(
-        <nav style={{display:'flex',justifyContent:'flex-end'}}>
-         <Link to={`/signin`}><p className='f3 link dim black underline pa3 pointer'>Sign In</p></Link>
-         <Link to={`/register` }><p className='f3 link dim black underline pa3 pointer'>Register</p></Link>
-        </nav>
-      );
+      if(userExist(user)){
+          return(
+          <nav style={{display:'flex',justifyContent:'flex-end'}}>
+           <p onClick={()=>SignOut(history)} className='f3 link dim black underline pa3 pointer'>Sign Out</p>
+  
+          </nav>
+        );
+      }else{
+        return(
+          <nav style={{display:'flex',justifyContent:'flex-end'}}>
+          <p onClick={()=>PushToLocation('/signin')} className='f3 link dim black underline pa3 pointer'>Sign In</p>
+          <p onClick={()=>PushToLocation('/register')} className='f3 link dim black underline pa3 pointer'>Register</p>
+          </nav>
+        );
+      }
     }
 }
 
@@ -41,7 +53,8 @@ const mapStateToProps=state=>{
 
 const mapDispatchToProps=(dispatch)=>{
   return{
-    SignOut : (history)=>dispatch(SignOut(history))
+    SignOut : (history)=>dispatch(SignOut(history)),
+    onClearForm : ()=>dispatch(ClearForm())
   }
 }
 

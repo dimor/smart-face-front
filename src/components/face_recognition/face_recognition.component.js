@@ -3,7 +3,7 @@ import './face_recognition.styles.css';
 import {connect} from 'react-redux';
 import Loader from '../loader/loader.component';
 
-const FaceRecognition = ({imgUrl,boxes,isPending}) => {
+const FaceRecognition = ({imgUrl,boxes,isPending,errormsg}) => {
 
 
   const createboxes=(boxes)=>{
@@ -16,21 +16,19 @@ const FaceRecognition = ({imgUrl,boxes,isPending}) => {
 
     return mappedBoxes;
   }
-
+    
 
   return (
-    <div className='center ma'>
-      <div className='absolute mt2'>
-
-        <img id='inputimage' alt='' src={imgUrl} width='500px' height='auto' />
+    <div className='relative center'>
+      <div className='absolute'>
+        <img className='' id='inputimage' alt='' src={imgUrl} width='500px' height='auto' />
       <Loader isPending={isPending}>
-         {boxes.length!==0?createboxes(boxes):null} 
-
+        {boxes.length!==0?createboxes(boxes):null}
       </Loader>
-
       </div>
-
+     
     </div>
+    
   );
 
 }
@@ -41,7 +39,8 @@ const mapStateToProps = state =>{
 
     imgUrl : state.image_link_form.imgUrl,
     boxes : state.image_link_form.boxes,
-    isPending:state.image_link_form.isPending
+    isPending:state.image_link_form.isPending,
+    errormsg:state.image_link_form.errormsg
 
   }
 }

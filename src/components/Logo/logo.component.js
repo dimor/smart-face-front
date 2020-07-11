@@ -18,8 +18,12 @@ const Logo = () => {
           width: 250
         }
       }>
-        <div className = "Tilt-inner" > <img src={sitelogo} alt='logo'/> </div>
+        <div className = "Tilt-inner" >
+           <img src={sitelogo} alt='logo'/> 
+      
+           </div>
       </Tilt>
+
     </div>
   );
 }

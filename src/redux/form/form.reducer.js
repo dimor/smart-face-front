@@ -26,9 +26,9 @@ const FormReducer = (state = INITIAL_STATE , action) =>{
 		case FormActionTypes.SUBMIT_SUCCESS:
 			return {...state,isPending:false,user:action.payload,validation:''}
 		case FormActionTypes.SUBMIT_FAILED:
-			return {...state, email:'',password:'', isPending:false, error:action.payload ,validation:action.payload.message}
+			return {...state, email:'',password:'', isPending:false, error:'' ,validation:action.payload.message}
 		case FormActionTypes.SIGN_OUT:
-			return {...state,user:{},name:'',email:'',password:''}
+			return {...state,user:{},name:'',email:'',password:'',isPending:false,validation:''}
 		case ImageLinkFormActionTypes.INCREMENT_SUBMIT_PENDING:
 			return {...state,isPending:true};
 		case ImageLinkFormActionTypes.INCREMENT_SUBMIT_SUCCESS:

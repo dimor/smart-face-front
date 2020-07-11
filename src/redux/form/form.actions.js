@@ -32,7 +32,15 @@ export const OnChangePassword=(text)=>({
 export const OnSubmit=(credentials,history)=>(dispatch)=>{
 	console.log('submit',credentials)
 
-	if(validateForm(credentials,history,dispatch)){
+
+const responseValidation = validateForm(credentials,history);
+
+
+console.log('res',responseValidation);
+
+
+
+	if(responseValidation === true){
 		dispatch({type:FormActionTypes.SUBMIT_PENDING});
 		SubmitCall(credentials,history,dispatch)
 		.then(data => dispatch({ type: FormActionTypes.SUBMIT_SUCCESS, payload: data }))
@@ -40,17 +48,19 @@ export const OnSubmit=(credentials,history)=>(dispatch)=>{
 			dispatch({ type: FormActionTypes.SUBMIT_FAILED, payload: error })
 		})
 	}else{
-		const error =  Error('Please fill in the required fields.')
-		dispatch({ type: FormActionTypes.SUBMIT_FAILED, payload: error })
-		// .catch(error=>dispatch({ type: FormActionTypes.SUBMIT_FAILED, payload: error }))
+		dispatch({ type: FormActionTypes.SUBMIT_FAILED, payload: responseValidation })
 	}	
 }
 
 
 export const SignOut=(history)=>(dispatch)=>{
+	sessionStorage.clear();
 	history.push(`/signin`);
 	dispatch({type: ImageLinkFormActionTypes.CLEAR_LINK_FORM})
 	dispatch({type: FormActionTypes.SIGN_OUT})
 };
 
 
+export const ClearForm =()=>(dispatch)=>{
+	dispatch({type: FormActionTypes.CLEAR_FORM})
+}

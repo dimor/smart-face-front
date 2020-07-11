@@ -1,6 +1,7 @@
 import {ImageLinkFormActionTypes} from './image_link_form.types';
 
-export const SubmitCallLinkForm=(imageUrl)=>{
+export const SubmitCallLinkForm=(imageUrl,dispatch)=>{
+
 
     return fetch('https://agile-atoll-31330.herokuapp.com/imageUrl',{
 
@@ -12,32 +13,35 @@ export const SubmitCallLinkForm=(imageUrl)=>{
 
     })
     .then(response=> response.json())
-}
+  }   
+    
+  
+
 
 
 export const calculateFaceLocation=(data)=>{
-
-  const regions = data.outputs[0].data.regions;
-  
-  const image = document.getElementById('inputimage');
-  
-  const width = Number(image.width);
-  
-  const height = Number(image.height);
-  
-  const bounded_faces = regions.map(region => {
-  
-        const clarifaiFace = region.region_info.bounding_box;
-        return{
-          leftCol:clarifaiFace.left_col * width,
-          topRow:clarifaiFace.top_row *height,
-          rightCol:width - (clarifaiFace.right_col*width),
-          bottomRow: height - (clarifaiFace.bottom_row*height)
-        }
-    })
-  
-    return bounded_faces;
-  
+      
+        const regions = data.outputs[0].data.regions;
+      
+        const image = document.getElementById('inputimage');
+        
+        const width = Number(image.width);
+        
+        const height = Number(image.height);
+        
+        const bounded_faces = regions.map(region => {
+        
+              const clarifaiFace = region.region_info.bounding_box;
+              return{
+                leftCol:clarifaiFace.left_col * width,
+                topRow:clarifaiFace.top_row *height,
+                rightCol:width - (clarifaiFace.right_col*width),
+                bottomRow: height - (clarifaiFace.bottom_row*height)
+              }
+          })
+        
+          return bounded_faces;
+          
   }
   
 
@@ -80,7 +84,11 @@ export const calculateFaceLocation=(data)=>{
     }
 
     return fetch('https://cors-anywhere.herokuapp.com/https://uguu.se/api.php?d=upload-tool',options)
-    .then(response =>response.text())
+    .then(response => {
+
+     return response.text()
+    })
+   
     
   }
   

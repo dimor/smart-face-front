@@ -12,3 +12,11 @@
     transition: 1s;
     background-color: white;
 }
+
+
+.face-frame{
+
+  border: 1px red solid;
+  height: 100%;
+
+}

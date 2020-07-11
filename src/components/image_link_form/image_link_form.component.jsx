@@ -15,18 +15,18 @@ const ImageLinkForm = ({onUploadLinkForm,onImageLinkFormChange,onSubmitLinkForm,
         {'This Smart Face will detect faces in your pictures. Give it a try.'}
       </p>
       <p className='f3 white db'>
-        {'Paste image url or choose from device and presss detect.'}
+        {'Paste image url or browse from device and presss detect.'}
       </p>
 
       <div className='center db br2'>
 
-        <div className='form center pa3 br3 shadow-5'>
-          <input value={imgUrl}  placeholder='http://example.com/face.jpg' type='url' className='w-100 pa2 f4 center' onChange={(e)=>onImageLinkFormChange(e.target.value)} />
+        <div className='w-100 form center pa3 br3 shadow-5'>
+          <input value={imgUrl}  placeholder='https://i.ibb.co/m8pkMD8/people.jpg' type='url' className='w-100 pa2 f4 center' onChange={(e)=>onImageLinkFormChange(e.target.value)} />
         </div>
 
-        <div className='form file white  center ma2 pa3 br3 shadow-5'>
+        <div className='w-100 form file white  center ma2 pa3 br3 shadow-5'>
           <input className='inputfile'  onChange={(e)=>onUploadLinkForm(e.target.files[0])} id='uploadfile' name='uploadfile' type='file'  />
-          <label htmlFor="uploadfile">Choose a file</label>
+          <label htmlFor="uploadfile">Browse from device</label>
         </div>
 
         <button
@@ -39,7 +39,6 @@ const ImageLinkForm = ({onUploadLinkForm,onImageLinkFormChange,onSubmitLinkForm,
     </div>
   );
 }
-
 
 
 
