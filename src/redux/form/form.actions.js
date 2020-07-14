@@ -30,13 +30,10 @@ export const OnChangePassword=(text)=>({
 
 
 export const OnSubmit=(credentials,history)=>(dispatch)=>{
-	console.log('submit',credentials)
 
 
 const responseValidation = validateForm(credentials,history);
 
-
-console.log('res',responseValidation);
 
 
 

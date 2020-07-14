@@ -7,7 +7,7 @@ const Loader =(props)=>{
 
     if(isPending){
 
-       return  <img className=' z-2' src={LoaderGif} alt='loader' width='200px' height='200px' />
+       return  <div><img className=' z-2' src={LoaderGif} alt='loader' width='200px' height='200px' /><p>Please Wait...</p></div>
 
     }else{
         return props.children;

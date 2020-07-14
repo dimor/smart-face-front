@@ -11,8 +11,6 @@ const Navigation =({SignOut,user,onClearForm})=>{
   let match = useRouteMatch();
 
 
-  console.log('nav',match);
-  console.log('nav',history);
 
     const PushToLocation=(location)=>{
 

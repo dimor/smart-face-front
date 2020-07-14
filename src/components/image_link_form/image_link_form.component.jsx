@@ -6,8 +6,6 @@ import {connect} from 'react-redux';
 
 const ImageLinkForm = ({onUploadLinkForm,onImageLinkFormChange,onSubmitLinkForm,imgUrl,user,link_msg}) => {
 
-  console.log('imageUrl0',imgUrl)
-
   return (
     <div className=' center db border-box w-100'>
 

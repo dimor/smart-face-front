@@ -4,7 +4,13 @@ import thunkMiddleware from 'redux-thunk';
 
 import rootReducer from './root.reducer';
 
-const middlewares = [thunkMiddleware,logger];
+let middlewares = [];
+
+if (process.env.NODE_ENV === 'development') {
+  middlewares = [...middlewares, thunkMiddleware, logger];
+} else {
+  middlewares = [...middlewares, thunkMiddleware];
+}
 
 const store = createStore(rootReducer, applyMiddleware(...middlewares));
 

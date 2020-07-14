@@ -11,7 +11,6 @@ export const calculateFaceLocation=(data)=>{
     const bounded_faces =  regions.map(region => {
     
           const clarifaiFace = region.region_info.bounding_box;
-          console.log(clarifaiFace);
           return{
             leftCol:clarifaiFace.left_col * width,
             topRow:clarifaiFace.top_row *height,
@@ -76,7 +75,7 @@ export const displayFaceBox =(boxes)=>{
           .then(count =>{
               this.setState(Object.assign(this.state.user,{entries:count}));
           })
-          .catch(console.log)
+          .catch(error => console.log(error))
 
         }
 

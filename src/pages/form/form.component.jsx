@@ -32,8 +32,6 @@ const Form =(props)=> {
 
   let regForm = history.location.pathname === '/register' ? true:false;
 
-    console.log(regForm)
-
 const PushToRegister=()=>{
   onClearForm()
   history.push(`/register`)
@@ -84,11 +82,11 @@ const PushToRegister=()=>{
             onClick={()=>onSubmitForm(credentials,history)}
                  className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value={!regForm?'Sign In':'Register'} />
               </div>
-              <div className="ma3">
+              {!regForm?(<div className="ma3">
                 <input
             onClick={()=>onSubmitForm(guestCredentials,history)}
                  className=" ph2 pv1 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value={'Sign In As Guest'} />
-              </div>
+              </div>):null}
               <p className='red bn '>{validation}</p>
               {!regForm?(<div className="lh-copy mt2">
                 <p onClick={()=>PushToRegister()} className="pointer f6 link dim black db">Register</p>
